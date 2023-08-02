@@ -26,7 +26,8 @@ const GroupType = new GraphQLObjectType({
     members: {
       type: GraphQLList(UserType),
       resolve(parent, args) {
-        return User.find({ _id: parent.members });
+        // return User.find({ _id: parent.members });
+        return User.find({ _id: { $in: parent.members } });
       },
     },
   }),
