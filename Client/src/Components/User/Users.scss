@@ -1,0 +1,39 @@
+.users-container{
+  width: 40rem;
+  height: 10rem;
+  //background: blanchedalmond;
+}
+
+.users-container table{
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.users-container thead{
+  height: 2.5rem;
+  background: darkgray;
+  //border-bottom:1px solid black;
+}
+.users-container tbody{
+  height: 7.5rem;
+  background: aliceblue;
+}
+.users-container tr:nth-child(even){
+  background: darksalmon;
+}
+.users-container th,
+.users-container td{
+    padding: 0 20px;
+  border-bottom:1px solid grey;
+}
+
+.delete-icon{
+  color: red;
+  cursor: pointer;
+}
+
+.edit-icon{
+  color: green;
+  cursor: pointer;
+}
