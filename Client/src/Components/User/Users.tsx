@@ -2,10 +2,12 @@ import {useQuery} from "@apollo/client";
 import './Users.scss'
 import UserRow from "./UserRow.tsx";
 import {GET_USERS} from "../../queries/userQueries.ts";
+import Spinner from "../Spinner/Spinner.tsx";
 
 export default function Users() {
+
     const {loading, error, data }=useQuery(GET_USERS);
-    if (loading) return <p>Loading</p>
+    if (loading) return <Spinner/>
     if (error) return <p>Something went wrong</p>
     if(data) console.log(data.users) //
 
@@ -20,13 +22,12 @@ export default function Users() {
                     <th>Email</th>
                     <th>Phone</th>
                     <th></th>
-                    <th></th>
                 </tr>
                 </thead>
 
             <tbody>
             {data.users.map((user:any) =>{return (
-                <UserRow name={user.name} email={user.email} phone={user.phone}/>
+                <UserRow {...user}/>
                 )} )}
             </tbody>
             </table>)

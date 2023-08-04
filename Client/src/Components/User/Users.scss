@@ -1,5 +1,5 @@
 .users-container{
-  width: 40rem;
+  width: 50rem;
   height: 10rem;
   //background: blanchedalmond;
 }
@@ -16,24 +16,34 @@
   //border-bottom:1px solid black;
 }
 .users-container tbody{
-  height: 7.5rem;
+  height: 4rem;
   background: aliceblue;
 }
 .users-container tr:nth-child(even){
-  background: darksalmon;
+  background: #a0a0a0;
 }
 .users-container th,
 .users-container td{
-    padding: 0 20px;
-  border-bottom:1px solid grey;
+  height: 3rem;
+  padding: 0 20px;
+  //border-bottom:1px solid grey;
+}
+.users-container th{
+  border-bottom: 2px solid #333;
 }
 
 .delete-icon{
-  color: red;
+  color: #ec7d7d;
   cursor: pointer;
+}
+.delete-icon:hover{
+  color: red;
 }
 
 .edit-icon{
-  color: green;
+  color: #7df37d;
   cursor: pointer;
+}
+.edit-icon:hover{
+  color: green;
 }
