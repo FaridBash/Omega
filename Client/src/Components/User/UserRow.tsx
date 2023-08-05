@@ -2,7 +2,7 @@ import './UserRow.scss'
 import {FaEdit, FaTrash, FaEye} from "react-icons/fa";
 import {useMutation} from "@apollo/client";
 import {Delete_User} from "../../mutations/userMutations";
-import {GET_USERS} from "../../queries/userQueries";
+import {GET_ALL_USERS} from "../../queries/userQueries";
 
 interface UserRowProps {
     id: string;
@@ -20,9 +20,9 @@ const UserRow: React.FC<UserRowProps>=(props) => {
     const [deleteUser] = useMutation(Delete_User, {
         variables: {id: props.id},
         update(cache, {data: {deleteUser}}) {
-            const {users} = cache.readQuery({query: GET_USERS});
+            const {users} = cache.readQuery({query: GET_ALL_USERS});
             cache.writeQuery({
-                query: GET_USERS,
+                query: GET_ALL_USERS,
                 data: {users: users.filter((user: any) => user.id !== deleteUser.id)},
             });
         }

@@ -16,7 +16,7 @@ const {
 const GroupType = new GraphQLObjectType({
   name: "Group",
   fields: () => ({
-    id: { type: GraphQLID },
+    id: { type: GraphQLString },
     name: { type: GraphQLString },
     description: { type: GraphQLString },
     status: { type: GraphQLString },
@@ -36,7 +36,7 @@ const GroupType = new GraphQLObjectType({
 const UserType = new GraphQLObjectType({
   name: "User",
   fields: () => ({
-    id: { type: GraphQLID },
+    id: { type: GraphQLString },
     name: { type: GraphQLString },
     email: { type: GraphQLString },
     password: { type: GraphQLString },
@@ -60,7 +60,7 @@ const RootQuery = new GraphQLObjectType({
     },
     group: {
       type: GroupType,
-      args: { id: { type: GraphQLID } },
+      args: { id: { type: GraphQLString } },
       resolve(parent, args) {
         return Group.findById(args.id);
       },
@@ -71,9 +71,16 @@ const RootQuery = new GraphQLObjectType({
         return User.find({});
       },
     },
+    usersByRole: {
+        type: new GraphQLList(UserType),
+        args: { role: { type: GraphQLNonNull(GraphQLList(GraphQLString)) } },
+        resolve(parent, args) {
+          return User.find({ role: { $in: args.role } });
+        }
+    },
     user: {
       type: UserType,
-      args: { id: { type: GraphQLID } },
+      args: { id: { type: GraphQLString } },
       resolve(parent, args) {
         return User.findById(args.id);
       },
@@ -114,7 +121,7 @@ const Mutation = new GraphQLObjectType({
     },
     deleteUser: {
       type: UserType,
-      args: { id: { type: GraphQLID } },
+      args: { id: { type: GraphQLString } },
       resolve(parent, args) {
         return User.findByIdAndDelete(args.id);
       },
@@ -122,7 +129,7 @@ const Mutation = new GraphQLObjectType({
     updateUser: {
         type: UserType,
         args: {
-            id: { type: GraphQLID },
+            id: { type: GraphQLString },
             name: { type: GraphQLString },
             email: { type: GraphQLString },
             password: { type: GraphQLString },
@@ -169,7 +176,7 @@ const Mutation = new GraphQLObjectType({
         startDate: { type: GraphQLNonNull(GraphQLString) },
         endDate: { type: GraphQLNonNull(GraphQLString) },
         catagory: { type: GraphQLNonNull(GraphQLString) },
-        members: { type: GraphQLList(GraphQLID) },
+        members: { type: GraphQLList(GraphQLString) },
       },
       resolve(parent, args) {
         const group = new Group({
@@ -186,7 +193,7 @@ const Mutation = new GraphQLObjectType({
     },
     deleteGroup: {
       type: GroupType,
-      args: { id: { type: GraphQLID } },
+      args: { id: { type: GraphQLString } },
       resolve(parent, args) {
         return Group.findByIdAndDelete(args.id);
       },
@@ -194,7 +201,7 @@ const Mutation = new GraphQLObjectType({
     updateGroup: {
       type: GroupType,
       args: {
-        id: { type: GraphQLID },
+        id: { type: GraphQLString },
         name: { type: GraphQLString },
         description: { type: GraphQLString },
         status: {
@@ -210,7 +217,7 @@ const Mutation = new GraphQLObjectType({
         startDate: { type: GraphQLString },
         endDate: { type: GraphQLString },
         catagory: { type: GraphQLString },
-        members: { type: GraphQLList(GraphQLID) },
+        members: { type: GraphQLList(GraphQLString) },
       },
       resolve(parent, args) {
         return Group.findByIdAndUpdate(
