@@ -11,7 +11,7 @@ const client = new ApolloClient({
 });
 function UsersPage() {
     // const [selectedRoleOption, setSelectedRoleOption] = useState<string>('');
-    const [optionArray, setOptionArray] = useState<string[]>(["Admin","Teacher"]);
+    const [optionArray, setOptionArray] = useState<string[]>(["All"]);
 
     useEffect(() => {
 console.log("optionArray", optionArray);

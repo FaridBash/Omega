@@ -22,6 +22,16 @@ const GET_USERS_BY_ROLE = gql`
       role
     }
   }
+`;const GET_USERS_BY_SINGLE_ROLE = gql`
+  query getUsersBySingleRole($role: String) {
+    usersBySingleRole(role: $role) {
+      id
+      name
+      email
+      phone
+      role
+    }
+  }
 `;
 
-export {GET_ALL_USERS, GET_USERS_BY_ROLE};
+export {GET_ALL_USERS, GET_USERS_BY_ROLE, GET_USERS_BY_SINGLE_ROLE};

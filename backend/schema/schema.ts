@@ -73,10 +73,17 @@ const RootQuery = new GraphQLObjectType({
     },
     usersByRole: {
         type: new GraphQLList(UserType),
-        args: { role: { type: GraphQLNonNull(GraphQLList(GraphQLString)) } },
+        args: { role: { type: GraphQLList(GraphQLString) } },
         resolve(parent, args) {
           return User.find({ role: { $in: args.role } });
         }
+    },
+    usersBySingleRole: {
+      type: new GraphQLList(UserType),
+      args: { role: { type: GraphQLString } },
+      resolve(parent, args) {
+        return User.find({ role: args.role });
+      }
     },
     user: {
       type: UserType,
