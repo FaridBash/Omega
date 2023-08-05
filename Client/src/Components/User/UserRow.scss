@@ -1,0 +1,94 @@
+.user-row{
+  width: 30rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: aliceblue;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.delete-btn{
+    width: 4rem;
+    //height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ec7d7d;
+    cursor: pointer;
+    margin-left: auto;
+  font-size: 20px;
+  border: 1px solid transparent;
+  &>*{
+    font-size: 20px;
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+}
+
+.delete-btn:hover{
+    background: red;
+  border: 1px solid transparent;
+}
+.icons-container{
+  //width: 10rem;
+  display: flex;
+  align-items: center;
+}
+.view-container,
+.trash-container,
+.edit-container{
+  width: 2rem;
+  height: 2rem;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  color: #f9f9f9;
+  font-size: small;
+}
+.trash-container{
+  background: red;
+  font-size: small;
+}
+
+.edit-container{
+  background: #7df37d;
+  font-size: small;
+}
+.edit-container:hover{
+  background: green;
+  border: 1px solid #7df37d;
+}
+.edit-container:active{
+  background: #7df37d;
+  border: 1px solid transparent;
+}
+.view-container{
+    background: grey;
+    font-size: small;
+}
+.view-container:hover{
+    background: #a0a0a0;
+    border: 1px solid grey;
+}
+.view-container:active{
+    background: grey;
+    border: 1px solid transparent;
+}
+
+
+.trash-container:hover{
+  background: #f9f9f9;
+  color: red;
+  border: 1px solid red;
+}
+.trash-container:active{
+  background: red;
+  color: #f9f9f9;
+  border: 1px solid transparent;
+}
